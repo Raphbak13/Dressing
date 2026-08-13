@@ -1,0 +1,18 @@
+# Dépendances
+node_modules/
+
+# Build Next.js (régénérable via `npm run build`)
+.next/
+out/
+
+# Secrets / env (jamais commités)
+.env
+.env*.local
+.vercel
+
+# Divers
+.DS_Store
+*.tsbuildinfo
+
+# Cache Expo (généré, jamais commité)
+.expo/

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'DRESSING — Email confirmé',
+  title: 'DRESSING · Email confirmé',
 };
 
 export default function EmailConfirmedPage() {

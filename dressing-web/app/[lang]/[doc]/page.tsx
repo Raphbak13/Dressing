@@ -11,7 +11,7 @@ export function generateMetadata({ params }: { params: { lang: string; doc: stri
     return {};
   }
   const doc = CONTENT[params.lang as Lang].docs[params.doc as DocSlug];
-  return { title: `DRESSING — ${doc.title}` };
+  return { title: `DRESSING · ${doc.title}` };
 }
 
 export default function DocPage({ params }: { params: { lang: string; doc: string } }) {
