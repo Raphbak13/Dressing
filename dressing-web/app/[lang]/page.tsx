@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -8,6 +9,24 @@ import { CONTENT, LANGS, type Lang } from '@/lib/content';
 
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
+}
+
+/**
+ * Titre et description PROPRES à l'accueil : sans ça, la page héritait du
+ * titre global du site et se retrouvait indistinguable des autres dans un
+ * résultat de recherche.
+ */
+export function generateMetadata({ params }: { params: { lang: string } }): Metadata {
+  const fr = params.lang === 'fr';
+  return {
+    title: fr
+      ? 'DRESSING · ta garde-robe intelligente, ta tenue chaque matin'
+      : 'DRESSING · your smart wardrobe, your outfit every morning',
+    description: fr
+      ? 'Numérise ta garde-robe, reçois ta tenue du jour selon la météo, et vois-la portée par toi. Styliste IA, journal de style, et le rituel DRESSING Real avec tes amis.'
+      : 'Digitise your wardrobe, get your daily outfit from the weather, and see it worn by you. AI stylist, style journal, and the DRESSING Real ritual with friends.',
+    alternates: { canonical: `https://dressing-app.com/${params.lang}/` },
+  };
 }
 
 /**
@@ -54,6 +73,36 @@ export default function Home({ params }: { params: { lang: string } }) {
           p: 'Deux photos, une pour la tenue et une pour toi. Tes amis voient ce que tu portes vraiment, ce jour-là, pas ce que tu as mis en scène.',
           to: 'fonctionnalites',
         },
+        {
+          tag: 'SCAN STREET',
+          h: 'Une tenue vue dans la rue, décryptée',
+          p: 'Tu photographies un look qui te plaît. Léon nomme chaque pièce, dit ce qui fait tenir l’ensemble, et te montre comment t’en rapprocher avec ce que tu possèdes.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'JOURNAL DE STYLE',
+          h: 'Ce que tu as porté, gardé',
+          p: 'Chaque tenue validée devient une page : la date, la météo, le lieu, ton style du jour. Un an plus tard, tu retrouves exactement ce que tu portais.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'GARDE-ROBE VERTE',
+          h: 'Ce que tu économises en portant ce que tu as',
+          p: 'L’argent que tu ne dépenses pas et le CO₂ que tu évites, calculés sur tes ports réels. Chiffres prudents, sources affichées.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'AMIS',
+          h: 'Le style se compare mieux à plusieurs',
+          p: 'Classement hebdomadaire, défis de style, carte de membre à faire évoluer. Tu vois ce que portent tes proches, ils voient ce que tu portes.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'LE FEED',
+          h: 'Les tenues du monde entier',
+          p: 'Chaque pièce est étiquetée par celui qui la porte : marque, matière, couleur. Tu ne tombes plus sur une photo sans savoir ce que c’est.',
+          to: 'fonctionnalites',
+        },
       ]
     : [
         {
@@ -80,10 +129,63 @@ export default function Home({ params }: { params: { lang: string } }) {
           p: 'Two photos, one for the outfit and one for you. Your friends see what you actually wear that day, not what you staged.',
           to: 'fonctionnalites',
         },
+        {
+          tag: 'STREET SCAN',
+          h: 'An outfit spotted on the street, decoded',
+          p: 'Photograph a look you like. Léon names every piece, explains what holds it together, and shows how to get close with what you own.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'STYLE JOURNAL',
+          h: 'What you wore, kept',
+          p: 'Every validated outfit becomes a page: date, weather, place, your style that day. A year later, you find exactly what you were wearing.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'GREEN WARDROBE',
+          h: 'What you save by wearing what you have',
+          p: 'The money you do not spend and the CO₂ you avoid, computed from your real wear. Conservative figures, sources shown.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'FRIENDS',
+          h: 'Style compares better together',
+          p: 'Weekly ranking, style challenges, a membership card that evolves. You see what your circle wears, they see what you wear.',
+          to: 'fonctionnalites',
+        },
+        {
+          tag: 'THE FEED',
+          h: 'Outfits from everywhere',
+          p: 'Every piece is tagged by whoever wears it: brand, fabric, colour. No more falling on a photo without knowing what it is.',
+          to: 'fonctionnalites',
+        },
       ];
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'DRESSING',
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'iOS',
+    url: 'https://dressing-app.com',
+    description: fr
+      ? 'Garde-robe numérique et styliste IA : ta tenue du jour composée avec tes propres vêtements.'
+      : 'Digital wardrobe and AI stylist: your daily outfit built from your own clothes.',
+    offers: [
+      { '@type': 'Offer', name: 'ESSENTIAL', price: '3.99', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'ELITE', price: '7.99', priceCurrency: 'EUR' },
+    ],
+    // ⚠️ Pas d'`aggregateRating` : aucune note réelle à ce jour, et en
+    // inventer une serait un faux avis structuré, sanctionné par Google.
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* ═══ 1. HÉROS — la promesse en une phrase, puis la preuve ═══ */}
       <section className="fh">
         <div className="fh-glow" aria-hidden />

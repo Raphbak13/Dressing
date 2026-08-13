@@ -50,14 +50,14 @@ export function BeforeAfter({
         onPointerCancel={() => setDragging(false)}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="ba-img" src={after} alt="" draggable={false} />
+        <img className="ba-img" src={after} alt={labelAfter} draggable={false} />
         <div className="ba-clip" style={{ width: `${pos}%` }}>
           {/* La largeur de l'image intérieure est FIXÉE à celle du cadre, pas à
               100 % du masque : sinon elle se comprimerait au lieu de se
               dévoiler, et les deux photos ne seraient plus alignées. */}
           <div className="ba-clip-in">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="ba-img" src={before} alt="" draggable={false} />
+            <img className="ba-img" src={before} alt={labelBefore} draggable={false} />
           </div>
           <span className="ba-label ba-label--l">{labelBefore}</span>
         </div>

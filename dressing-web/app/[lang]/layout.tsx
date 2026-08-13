@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { PageMotion } from '@/components/PageMotion';
+import { StickyCta } from '@/components/StickyCta';
 import { LANGS, type Lang } from '@/lib/content';
 
 export function generateStaticParams() {
@@ -23,6 +24,7 @@ export default function LangLayout({
       <Header lang={lang} />
       <PageMotion>{children}</PageMotion>
       <Footer lang={lang} />
+      <StickyCta lang={lang} label={lang === 'fr' ? 'Rejoindre' : 'Join'} />
     </>
   );
 }

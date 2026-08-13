@@ -11,6 +11,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <Link href={`/${lang}/abonnements`}>{t.nav.abonnements}</Link>
           <Link href={`/${lang}/fonctionnalites`}>{t.nav.fonctionnalites}</Link>
           <Link href={`/${lang}/faq`}>{t.nav.faq}</Link>
+          <Link href={`/${lang}/histoire`}>{lang === 'fr' ? 'L’histoire' : 'The story'}</Link>
           {DOC_SLUGS.map((s) => (
             <Link key={s} href={`/${lang}/${s}`}>
               {t.nav[s]}

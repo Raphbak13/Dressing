@@ -156,7 +156,7 @@ function TileRafale({ fr }: { fr: boolean }) {
           {RAF.map((r, i) => (
             <div key={r.img} className={`raf-item${i < shot ? ' in' : ''}`}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={r.img} alt="" />
+              <img src={r.img} alt={r.label} />
               <div className="raf-meta">
                 {i < ana ? (
                   <>
@@ -228,11 +228,11 @@ function TileReal({ fr }: { fr: boolean }) {
           key={p.img}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={p.img} alt="" />
+          <img src={p.img} alt={`Tenue publiée par ${p.user} sur DRESSING Real`} />
           <div className="rscrim" />
           <div className="rface-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="rface" src={p.face} alt="" />
+            <img className="rface" src={p.face} alt={`Selfie de ${p.user}, pris au même moment`} />
           </div>
           <div className="rbot">
             <span className="ruser">{p.user}</span>

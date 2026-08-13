@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { CONTENT, DOC_SLUGS, LANGS, type DocSlug, type Lang } from '@/lib/content';
@@ -29,6 +30,13 @@ export default function DocPage({ params }: { params: { lang: string; doc: strin
 
   return (
     <div className="container doc">
+      {/* Fil d'Ariane : ces pages s'atteignent souvent depuis un moteur de
+          recherche, sans avoir vu l'accueil. Il faut pouvoir remonter. */}
+      <nav className="crumbs" aria-label="Fil d’Ariane">
+        <Link href={`/${params.lang}`}>{params.lang === 'fr' ? 'Accueil' : 'Home'}</Link>
+        <span aria-hidden>/</span>
+        <b>{doc.title}</b>
+      </nav>
       <h1>{doc.title}</h1>
       {doc.intro ? <p className="intro">{doc.intro}</p> : null}
       {doc.sections.map((s, i) => (
