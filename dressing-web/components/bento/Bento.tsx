@@ -171,8 +171,8 @@ function TileRafale({ fr }: { fr: boolean }) {
 // sur les deux photos de chaque slide (crédible, comme un vrai post).
 const POSTS = [
   { img: '/dr/real-1-fit.jpg', face: '/dr/real-1-face.jpg', user: '@lena', react: '😍', at: '15:02' },
-  { img: '/dr/real-2-fit.jpg', face: '/dr/real-2-face.jpg', user: '@sofiane', react: '🔥', at: '15:04' },
-  { img: '/dr/real-3-fit.jpg', face: '/dr/real-3-face.jpg', user: '@camille', react: '👏', at: '15:11' },
+  { img: '/dr/real-2-fit.jpg', face: '/dr/real-2-face.jpg', user: '@camille', react: '🔥', at: '15:04' },
+  { img: '/dr/real-3-fit.jpg', face: '/dr/real-3-face.jpg', user: '@sofiane', react: '👏', at: '15:11' },
 ];
 
 /**
