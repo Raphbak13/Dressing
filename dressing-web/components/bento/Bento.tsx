@@ -21,6 +21,8 @@ type Msg = { role: 'user' | 'leon'; text: string };
 // Conversation de départ (toujours visible → la tuile n'est jamais vide, même
 // avant animation / si l'onglet est en veille) : les 2 derniers messages.
 const SEED: Msg[] = [
+  { role: 'user', text: SCRIPT[0].q },
+  { role: 'leon', text: SCRIPT[0].a },
   { role: 'user', text: SCRIPT[1].q },
   { role: 'leon', text: SCRIPT[1].a },
   { role: 'user', text: SCRIPT[2].q },
@@ -34,8 +36,9 @@ function TileLeon({ fr }: { fr: boolean }) {
   const [dots, setDots] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>(SEED);
 
-  // garde les 4 derniers messages (2 échanges) → la tuile reste bien remplie
-  const push = (m: Msg) => setMsgs((prev) => [...prev, m].slice(-4));
+  // garde les 6 derniers messages (3 échanges) → la tuile reste PLEINE ;
+  // à 4, la conversation flottait au fond d'une carte de 420 px
+  const push = (m: Msg) => setMsgs((prev) => [...prev, m].slice(-6));
 
   useLoop(inView && !reduced, async (ctl) => {
     for (const s of SCRIPT) {
@@ -189,7 +192,7 @@ function TileReal({ fr }: { fr: boolean }) {
     <div className="tile t-real">
       <div className="rtop">
         <b>DRESSING Real</b>
-        <span className="rclock">{fr ? '15:00 · chaque jour' : '15:00 · every day'}</span>
+        <span className="rclock">15:00</span>
       </div>
       {POSTS.map((p, i) => (
         <div className="rslide" style={{ animationDelay: `${i * 3}s` }} key={p.img}>
@@ -215,9 +218,9 @@ function TileReal({ fr }: { fr: boolean }) {
 // Trois silhouettes, rien d'autre. Aucune donnée, aucune animation JS : des
 // vêtements, ce que l'app sert au fond.
 const LOOKS = [
-  { img: '/shots/hero.jpg', tag: 'minimal' },
-  { img: '/shots/social.jpg', tag: 'street' },
-  { img: '/shots/leon.jpg', tag: 'tailoring' },
+  { img: '/dr/real-1.jpg', tag: 'minimal' },
+  { img: '/dr/real-2.jpg', tag: 'workwear' },
+  { img: '/dr/real-3.jpg', tag: 'street' },
 ];
 
 function LookStrip({ fr }: { fr: boolean }) {

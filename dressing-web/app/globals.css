@@ -812,6 +812,11 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
 
 /* — LÉON (grande tuile chat animée) — */
 .t-leon { grid-area: leon; min-height: 392px; }
+/* Le chat remplit sa tuile : ancré en bas comme un vrai fil, mais la zone
+   haute reçoit un dégradé pour que le vide se lise comme de l'historique qui
+   remonte, et non comme un trou. */
+.t-leon .chat-body { justify-content: flex-end; }
+
 .t-leon .chat-head { border-bottom-color: rgba(255, 255, 255, 0.07); }
 .t-leon .chat-body { padding-top: 14px; }
 .t-leon .bubble { font-size: 13px; }
@@ -829,10 +834,9 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
 .t-real .rslide { position: absolute; inset: 0; opacity: 0; animation: rcycle 9s infinite; }
 .t-real .rslide img { width: 100%; height: 100%; object-fit: cover; }
 .t-real .rscrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, transparent 34%, transparent 55%, rgba(10, 10, 10, 0.82) 100%); z-index: 2; }
-.t-real .rslide img.rface { position: absolute; top: 52px; left: 14px; width: 29%; max-width: 96px; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 14px; border: 2px solid rgba(255, 255, 255, 0.92); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45); z-index: 3; }
 .t-real .rtop { position: absolute; top: 16px; left: 16px; right: 16px; z-index: 4; display: flex; justify-content: space-between; align-items: center; }
-.t-real .rtop b { font-family: var(--font-title), serif; color: #fff; font-size: 15px; }
-.t-real .rclock { color: var(--gold); font-size: 12px; background: rgba(0, 0, 0, 0.4); padding: 3px 9px; border-radius: 20px; }
+.t-real .rtop b { font-family: var(--font-title), serif; color: #fff; font-size: 15px; white-space: nowrap; }
+.t-real .rclock { color: var(--gold); font-size: 11.5px; background: rgba(0, 0, 0, 0.45); padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
 .t-real .rbot { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 3; display: flex; align-items: center; justify-content: space-between; }
 .t-real .ruser { color: #fff; font-size: 13px; font-weight: 600; }
 .t-real .rreact { font-size: 20px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); }
@@ -916,7 +920,10 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
 /* Tuile Rafale = tuile HAUTE (col 3, 3 rangées) : liste centrée, aérée */
 .t-rafale { min-height: 420px; }
 .t-rafale .raf-list { flex: 1; justify-content: center; gap: 12px; }
-.t-rafale .raf-item { padding: 9px; gap: 12px; }
+.t-rafale .raf-item { padding: 12px; gap: 14px; }
+.t-rafale .raf-item img { width: 64px; height: 64px; border-radius: 13px; }
+.t-rafale .raf-check { font-size: 12.5px; }
+.t-rafale .raf-label { font-size: 11px; }
 .t-rafale .raf-item img { width: 52px; height: 52px; }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1444,4 +1451,89 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
   .price-row { grid-template-columns: 1fr; }
   .price-row-num { text-align: left; }
   .value { gap: 16px; padding: 26px 0; }
+}
+
+
+/* ===========================================================================
+   RÉSEAUX
+   =========================================================================== */
+.socials { display: flex; gap: 22px; flex-wrap: wrap; margin: 22px 0 14px; }
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.socials a:hover { color: var(--gold); }
+.socials svg { transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+.socials a:hover svg { transform: translateY(-2px) rotate(-4deg); }
+
+/* ===========================================================================
+   MOUVEMENT — transitions de page et matière vivante
+   ---------------------------------------------------------------------------
+   Inspiration fashn.ai : révélations au défilement, images qui respirent au
+   survol, rien qui clignote. Tout est coupé par prefers-reduced-motion.
+   =========================================================================== */
+
+.page-motion {
+  animation: page-in 0.34s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Les liens de nav : un filet doré qui se déploie depuis la gauche. */
+.nav a { position: relative; }
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.nav a:hover::after { transform: scaleX(1); }
+
+/* Les tuiles bento se soulèvent très légèrement. Une carte qui ne réagit pas
+   au curseur donne l'impression d'une image, pas d'un produit. */
+.tile {
+  transition:
+    transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 64px rgba(0, 0, 0, 0.5);
+  border-color: rgba(201, 168, 76, 0.22);
+}
+
+/* Les boutons : la lueur passe, elle ne clignote pas. */
+.btn { position: relative; overflow: hidden; }
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transition: left 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn:hover::before { left: 130%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-motion { animation: none; }
+  .tile:hover { transform: none; }
+  .btn::before { display: none; }
+  .look:hover img { transform: none; }
+  .socials a:hover svg { transform: none; }
 }
