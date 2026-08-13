@@ -22,8 +22,10 @@ const FREQUENCIES = ['Quotidien', 'Plusieurs fois par semaine', 'Occasionnel'];
 const ERRORS: Record<string, string> = {
   invalid_email: 'Cette adresse ne ressemble pas à un email.',
   invalid_age: 'Indique un âge valide.',
-  already_beta: 'Cette adresse est déjà candidate au programme beta. Les deux voies sont exclusives.',
-  already_waitlist: 'Cette adresse est déjà inscrite comme parrain. Les deux voies sont exclusives.',
+  already_beta:
+    'Cette adresse est déjà candidate au programme beta. Les deux voies sont exclusives.',
+  already_waitlist:
+    'Cette adresse est déjà inscrite comme parrain. Les deux voies sont exclusives.',
   rate_limited: 'Trop de tentatives. Réessaie dans un moment.',
 };
 
@@ -144,8 +146,8 @@ function SponsorForm({ incomingRef }: { incomingRef: string | null }) {
       <p className="wl-kicker">VOIE 1 · PARRAINAGE</p>
       <h2>Devenir parrain</h2>
       <p className="wl-sub">
-        Ton email, un lien à partager. Deux amis inscrits, et tu reçois un mois d’abonnement
-        MAISON offert au lancement.
+        Ton email, un lien à partager. Deux amis inscrits, et tu reçois un mois d’abonnement MAISON
+        offert au lancement.
       </p>
 
       <label className="wl-label" htmlFor="wl-email">
@@ -317,7 +319,11 @@ function BetaForm() {
 
       {error ? <p className="wl-error">{error}</p> : null}
 
-      <button className="wl-btn wl-btn--ghost" type="submit" disabled={!commit || state === 'sending'}>
+      <button
+        className="wl-btn wl-btn--ghost"
+        type="submit"
+        disabled={!commit || state === 'sending'}
+      >
         {state === 'sending' ? 'Un instant…' : 'Envoyer ma candidature'}
       </button>
       <p className="wl-fine">

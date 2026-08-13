@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: 'FAQ et aide · DRESSING',
   description:
-    "Toutes les réponses sur DRESSING : prise en main, garde-robe, Léon le styliste IA, tenue du jour, abonnements, données personnelles, et contact du support.",
+    'Toutes les réponses sur DRESSING : prise en main, garde-robe, Léon le styliste IA, tenue du jour, abonnements, données personnelles, et contact du support.',
 };
 
 // La FAQ est rédigée en français (choix produit) — servie telle quelle sur /en.

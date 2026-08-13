@@ -23,12 +23,16 @@ export function Header({ lang }: { lang: Lang }) {
               {
                 href: `/${lang}/abonnements/`,
                 label: t.nav.offres,
-                hint: fr ? 'ESSENTIAL et ELITE, mensuel ou annuel' : 'ESSENTIAL and ELITE, monthly or yearly',
+                hint: fr
+                  ? 'ESSENTIAL et ELITE, mensuel ou annuel'
+                  : 'ESSENTIAL and ELITE, monthly or yearly',
               },
               {
                 href: `/${lang}/fonctionnalites/`,
                 label: t.nav.fonctionnalites,
-                hint: fr ? 'Le détail de ce que débloque chaque offre' : 'What each plan unlocks, in detail',
+                hint: fr
+                  ? 'Le détail de ce que débloque chaque offre'
+                  : 'What each plan unlocks, in detail',
               },
             ]}
           />

@@ -51,7 +51,15 @@ export function Faq() {
   return (
     <div className="faq">
       <div className="faq-search">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+        >
           <circle cx="11" cy="11" r="8" />
           <path d="M21 21l-4.35-4.35" />
         </svg>
@@ -75,7 +83,8 @@ export function Faq() {
               onClick={() => {
                 setCat(c.key);
                 setOpen(null);
-              }}>
+              }}
+            >
               {c.label} <span>({c.items.length})</span>
             </button>
           ))}
@@ -107,11 +116,20 @@ export function Faq() {
                   <button
                     className="faq-q"
                     aria-expanded={isOpen}
-                    onClick={() => setOpen(isOpen ? null : id)}>
+                    onClick={() => setOpen(isOpen ? null : id)}
+                  >
                     <span>
                       <Highlight text={it.q} query={searching ? query.trim() : ''} />
                     </span>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="16"
+                      height="16"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                    >
                       <path d="M6 9l6 6 6-6" />
                     </svg>
                   </button>

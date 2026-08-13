@@ -17,7 +17,8 @@ export default function EmailConfirmedPage() {
         textAlign: 'center',
         gap: 18,
         maxWidth: 520,
-      }}>
+      }}
+    >
       <div style={{ fontSize: 56, lineHeight: 1 }}>✓</div>
       <h1 style={{ color: 'var(--gold)', margin: 0 }}>Email confirmé</h1>
       <p style={{ fontSize: 18, lineHeight: 1.6, opacity: 0.9 }}>

@@ -12,9 +12,18 @@ import { typeText, useDemo, useLoop } from '../demos/engine';
 
 // ——— LÉON : chat animé ———
 const SCRIPT = [
-  { q: 'Je mets quoi avec mon short gris ce soir ?', a: 'Ta chemise en lin noir rentrée devant + des sneakers claires. Parfait pour 21°. ✨' },
-  { q: 'Mariage samedi, tu proposes quoi ?', a: 'Costume bleu marine, chemise blanche, richelieus. Coupe ajustée pour ta carrure. 🤵' },
-  { q: 'Il pleut demain…', a: 'Trench + pull col roulé gris. Chaussures cuir traité, pas les suédées. ☔' },
+  {
+    q: 'Je mets quoi avec mon short gris ce soir ?',
+    a: 'Ta chemise en lin noir rentrée devant + des sneakers claires. Parfait pour 21°. ✨',
+  },
+  {
+    q: 'Mariage samedi, tu proposes quoi ?',
+    a: 'Costume bleu marine, chemise blanche, richelieus. Coupe ajustée pour ta carrure. 🤵',
+  },
+  {
+    q: 'Il pleut demain…',
+    a: 'Trench + pull col roulé gris. Chaussures cuir traité, pas les suédées. ☔',
+  },
 ];
 
 type Msg = { role: 'user' | 'leon'; text: string };
@@ -80,7 +89,7 @@ function TileLeon({ fr }: { fr: boolean }) {
                 <img src="/leon-mascot.png" alt="" />
                 <div className="bubble leon">{m.text}</div>
               </div>
-            )
+            ),
           )}
           {dots ? (
             <div className="msg-leon">
@@ -170,9 +179,24 @@ function TileRafale({ fr }: { fr: boolean }) {
 // (double capture de l'app : dos → selfie). Crossfade 100% CSS, même personne
 // sur les deux photos de chaque slide (crédible, comme un vrai post).
 const POSTS = [
-  { img: '/dr/real-1-fit.jpg', face: '/dr/real-1-face.jpg', user: '@lena', react: '😍', at: '15:02' },
-  { img: '/dr/real-2-fit.jpg', face: '/dr/real-2-face.jpg', user: '@camille', react: '🔥', at: '15:04' },
-  { img: '/dr/real-3-fit.jpg', face: '/dr/real-3-face.jpg', user: '@sofiane', react: '👏', at: '15:11' },
+  // ⚠️ Seulement des tenues POSÉES, jamais une photo au miroir : celle-ci
+  // montrait déjà une personne, et la vignette y collait le visage de
+  // quelqu'un d'autre. Deux personnes sur la même publication, c'est
+  // exactement ce qui « faisait bizarre ».
+  {
+    img: '/dr/real-1-fit.jpg',
+    face: '/dr/real-1-face.jpg',
+    user: '@lena',
+    react: '😍',
+    at: '15:02',
+  },
+  {
+    img: '/dr/real-3-fit.jpg',
+    face: '/dr/real-3-face.jpg',
+    user: '@sofiane',
+    react: '👏',
+    at: '15:11',
+  },
 ];
 
 /**
@@ -195,7 +219,14 @@ function TileReal({ fr }: { fr: boolean }) {
         <span className="rclock">15:00</span>
       </div>
       {POSTS.map((p, i) => (
-        <div className="rslide" style={{ animationDelay: `${i * 3}s` }} key={p.img}>
+        <div
+          className="rslide"
+          style={{
+            animationDelay: `${i * 3}s`,
+            animationDuration: `${POSTS.length * 3}s`,
+          }}
+          key={p.img}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={p.img} alt="" />
           <div className="rscrim" />
@@ -210,36 +241,6 @@ function TileReal({ fr }: { fr: boolean }) {
           </div>
         </div>
       ))}
-    </div>
-  );
-}
-
-// ——— BANDE MODE ———
-// Trois silhouettes, rien d'autre. Aucune donnée, aucune animation JS : des
-// vêtements, ce que l'app sert au fond.
-const LOOKS = [
-  { img: '/dr/real-1.jpg', tag: 'minimal' },
-  { img: '/dr/real-2.jpg', tag: 'workwear' },
-  { img: '/dr/real-3.jpg', tag: 'street' },
-];
-
-function LookStrip({ fr }: { fr: boolean }) {
-  return (
-    <div className="tile t-looks">
-      <div className="looks-row">
-        {LOOKS.map((l) => (
-          <figure className="look" key={l.img}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={l.img} alt="" />
-            <figcaption>{l.tag}</figcaption>
-          </figure>
-        ))}
-      </div>
-      <p className="looks-line">
-        {fr
-          ? 'Ta garde-robe, portée. Pas un catalogue : ce que tu as déjà, remis en ordre.'
-          : 'Your wardrobe, worn. Not a catalogue: what you already own, put back in order.'}
-      </p>
     </div>
   );
 }
@@ -276,19 +277,25 @@ function FeatTile({
   );
 }
 
-const stroke = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
+const stroke = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.7,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+};
 
 export function Bento({ fr = true }: { fr?: boolean }) {
   return (
     <section className="bento-sec">
       <div className="container">
         <div className="bento-head">
-          <p className="kicker">L’APP</p>
-          <h2>{fr ? 'Tout ce que Léon fait pour toi.' : 'Everything Léon does for you.'}</h2>
+          <p className="kicker">{fr ? 'EN ACTION' : 'IN ACTION'}</p>
+          <h2>{fr ? 'Trois écrans, en vrai.' : 'Three screens, for real.'}</h2>
           <p>
             {fr
-              ? 'Une tenue chaque matin, ta garde-robe en 2 minutes, un vrai conseil quand tu veux, et le rituel entre amis.'
-              : 'An outfit every morning, your wardrobe in 2 minutes, real advice anytime, and the ritual with friends.'}
+              ? 'Pas des captures figées : ce sont les écrans de l’app, qui tournent devant toi.'
+              : 'Not frozen screenshots: these are the app’s screens, running in front of you.'}
           </p>
         </div>
 
@@ -296,12 +303,6 @@ export function Bento({ fr = true }: { fr?: boolean }) {
           <TileLeon fr={fr} />
           <TileRafale fr={fr} />
           <TileReal fr={fr} />
-
-          {/* Trois bandes de mode plutôt que quatre tuiles de
-              fonctionnalités : on vend un rapport aux vêtements, pas une liste
-              de cases cochées. Le détail vit sur /fonctionnalites, pour qui le
-              cherche. */}
-          <LookStrip fr={fr} />
         </div>
       </div>
     </section>

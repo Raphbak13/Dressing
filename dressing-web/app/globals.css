@@ -764,8 +764,7 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
   grid-template-areas:
     'leon leon rafale real'
     'leon leon rafale real'
-    'leon leon rafale real'
-    'looks looks looks looks';
+    'leon leon rafale real';
 }
 
 /* — tuile : carte en relief, dégradé, lueur, hover vivant — */
@@ -842,9 +841,9 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
 .t-real .rreact { font-size: 20px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)); }
 @keyframes rcycle {
   0% { opacity: 0; }
-  3% { opacity: 1; }
-  30% { opacity: 1; }
-  36% { opacity: 0; }
+  4% { opacity: 1; }
+  46% { opacity: 1; }
+  54% { opacity: 0; }
   100% { opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -902,8 +901,7 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
       'leon leon'
       'leon leon'
       'rafale real'
-      'rafale real'
-      'looks looks';
+      'rafale real';
   }
   .t-leon { min-height: 0; }
   .t-real, .t-rafale { min-height: 0; }
@@ -1536,4 +1534,187 @@ mark { background: rgba(201, 168, 76, 0.3); color: var(--text); border-radius: 3
   .btn::before { display: none; }
   .look:hover img { transform: none; }
   .socials a:hover svg { transform: none; }
+}
+
+/* ===========================================================================
+   ACCUEIL — structure fashn.ai
+   ---------------------------------------------------------------------------
+   Promesse → transformation montrée → en action → ce que ça fait → appel final.
+   =========================================================================== */
+
+.fh { position: relative; padding: 108px 0 0; text-align: center; overflow: hidden; }
+.fh-glow {
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 640px;
+  background: radial-gradient(closest-side, rgba(201, 168, 76, 0.14), transparent 72%);
+  pointer-events: none;
+}
+.fh-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.6px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.fh-title {
+  font-size: clamp(42px, 7.4vw, 88px);
+  line-height: 1.03;
+  letter-spacing: -0.015em;
+}
+.fh-sub {
+  margin: 22px auto 0;
+  max-width: 560px;
+  color: var(--text2);
+  font-size: clamp(15px, 1.7vw, 17.5px);
+  line-height: 1.62;
+}
+.fh-cta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.fh-note { color: var(--text3); font-size: 12.5px; }
+
+/* — Avant / après — le geste central du héros de fashn — */
+.ba {
+  position: relative;
+  margin: 54px auto 0;
+  max-width: 940px;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55);
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+}
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-clip { position: absolute; inset: 0; overflow: hidden; }
+/* Largeur FIXÉE au cadre : sans ça l'image se comprimerait au lieu de se
+   dévoiler, et les deux photos ne seraient plus alignées. */
+.ba-clip-in { position: absolute; inset: 0; width: 940px; max-width: 100vw; }
+.ba--drag .ba-clip, .ba--drag .ba-handle { transition: none; }
+.ba-clip, .ba-handle { transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1), left 0.35s cubic-bezier(0.23, 1, 0.32, 1); }
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 3;
+  pointer-events: none;
+}
+.ba-handle span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(10, 10, 10, 0.82);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.55);
+}
+.ba-handle span::before,
+.ba-handle span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid #fff;
+  border-right: 1.5px solid #fff;
+}
+.ba-handle span::before { left: 11px; transform: translateY(-50%) rotate(-135deg); }
+.ba-handle span::after { right: 11px; transform: translateY(-50%) rotate(45deg); }
+
+.ba-label {
+  position: absolute;
+  bottom: 16px;
+  z-index: 4;
+  font-size: 10.5px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(6px);
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+.ba-label--l { left: 16px; }
+.ba-label--r { right: 16px; }
+
+/* Le range reste utilisable au clavier mais invisible : le curseur dessiné
+   au-dessus fait tout le travail visuel. */
+.ba-range { position: absolute; inset: auto 0 0 0; width: 100%; opacity: 0; height: 34px; cursor: ew-resize; }
+.ba-range:focus-visible { opacity: 0.001; outline: 2px solid var(--gold); }
+
+/* — Ce que ça fait : quatre blocs — */
+.fx-h { font-size: clamp(29px, 4.4vw, 46px); line-height: 1.1; margin: 12px 0 34px; }
+.fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(288px, 1fr)); gap: 18px; }
+.fx-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 26px;
+  background: linear-gradient(158deg, #141414 0%, #0c0c0c 72%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.55s cubic-bezier(0.23, 1, 0.32, 1), transform 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fx-card:hover { border-color: rgba(201, 168, 76, 0.3); transform: translateY(-3px); }
+.fx-tag { font-size: 10.5px; letter-spacing: 2.2px; color: var(--gold); margin-bottom: 12px; }
+.fx-card h3 { font-size: 22px; line-height: 1.22; margin-bottom: 11px; }
+.fx-p { color: var(--text2); font-size: 14.5px; line-height: 1.62; flex: 1; }
+.fx-link {
+  margin-top: 18px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13.5px;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.fx-link span { transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); }
+.fx-link:hover span { transform: translateX(5px); }
+
+/* — Fondateurs & beta — */
+.fj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.fj-card {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 32px 28px;
+  background: var(--bg2);
+  height: 100%;
+}
+.fj-card--gold {
+  background: linear-gradient(165deg, rgba(201, 168, 76, 0.1), var(--bg2) 64%);
+  border-color: rgba(201, 168, 76, 0.3);
+}
+.fj-card h3 { font-size: clamp(24px, 3vw, 31px); margin-bottom: 12px; }
+.fj-card .btn { margin-top: 22px; }
+
+.fcta { text-align: center; border-top: 1px solid var(--border); }
+.fcta-h { font-size: clamp(30px, 4.8vw, 52px); line-height: 1.08; margin-bottom: 16px; }
+.fcta .sub { margin: 0 auto; max-width: 480px; }
+.fcta .note { margin-top: 26px; }
+
+@media (max-width: 700px) {
+  .fh { padding-top: 76px; }
+  .ba { margin-top: 34px; aspect-ratio: 4 / 5; border-radius: 18px; }
+  .fx-card { padding: 24px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-card:hover { transform: none; }
+  .fx-link:hover span { transform: none; }
+  .ba-clip, .ba-handle { transition: none; }
 }

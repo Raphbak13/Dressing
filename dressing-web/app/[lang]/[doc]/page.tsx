@@ -7,7 +7,10 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: { lang: string; doc: string } }) {
-  if (!(LANGS as string[]).includes(params.lang) || !(DOC_SLUGS as readonly string[]).includes(params.doc)) {
+  if (
+    !(LANGS as string[]).includes(params.lang) ||
+    !(DOC_SLUGS as readonly string[]).includes(params.doc)
+  ) {
     return {};
   }
   const doc = CONTENT[params.lang as Lang].docs[params.doc as DocSlug];
@@ -15,7 +18,10 @@ export function generateMetadata({ params }: { params: { lang: string; doc: stri
 }
 
 export default function DocPage({ params }: { params: { lang: string; doc: string } }) {
-  if (!(LANGS as string[]).includes(params.lang) || !(DOC_SLUGS as readonly string[]).includes(params.doc)) {
+  if (
+    !(LANGS as string[]).includes(params.lang) ||
+    !(DOC_SLUGS as readonly string[]).includes(params.doc)
+  ) {
     notFound();
   }
   const lang = params.lang as Lang;

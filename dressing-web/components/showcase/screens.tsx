@@ -111,7 +111,15 @@ export function TodayScreen({ run, fr }: { run: boolean; fr?: boolean }) {
           </div>
         </div>
 
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: 12 }}>
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginTop: 12,
+          }}
+        >
           {p === 'composing' ? (
             <div className="oc-compose">
               <div className="oc-halo" />
@@ -130,7 +138,8 @@ export function TodayScreen({ run, fr }: { run: boolean; fr?: boolean }) {
               </span>
               <div className="oc-note">
                 <span>
-                  ♥ {fr
+                  ♥{' '}
+                  {fr
                     ? 'Noir en haut, gris clair en bas : le contraste que tu préfères.'
                     : 'Black on top, light grey below: the contrast you prefer.'}
                 </span>
@@ -151,14 +160,28 @@ export function TodayScreen({ run, fr }: { run: boolean; fr?: boolean }) {
                 <i />
                 <i />
               </div>
-              <button className={`oc-cta${p === 'worn' ? ' done' : ''}`} type="button" tabIndex={-1}>
-                {p === 'worn' ? (fr ? '✓ Tenue validée' : '✓ Outfit logged') : fr ? 'Je porte ça' : 'Wearing this'}
+              <button
+                className={`oc-cta${p === 'worn' ? ' done' : ''}`}
+                type="button"
+                tabIndex={-1}
+              >
+                {p === 'worn'
+                  ? fr
+                    ? '✓ Tenue validée'
+                    : '✓ Outfit logged'
+                  : fr
+                    ? 'Je porte ça'
+                    : 'Wearing this'}
               </button>
             </div>
           ) : (
             <div className="oc-idle">
               <p className="oc-idle-t">{fr ? 'Ta tenue du jour t’attend' : 'Your outfit awaits'}</p>
-              <button className={`oc-gen${p === 'pressed' ? ' press' : ''}`} type="button" tabIndex={-1}>
+              <button
+                className={`oc-gen${p === 'pressed' ? ' press' : ''}`}
+                type="button"
+                tabIndex={-1}
+              >
                 {fr ? 'Générer ma tenue du jour' : 'Generate my outfit'}
               </button>
             </div>
@@ -172,9 +195,18 @@ export function TodayScreen({ run, fr }: { run: boolean; fr?: boolean }) {
 
 // ═══════════════ LÉON — chat (fidèle stylist.tsx) ═══════════════
 const SCRIPT = [
-  { q: 'Qu’est-ce que je mets avec mon short gris ce soir ?', a: 'Ta chemise en lin noir, rentrée devant + des sneakers claires. 21° à 21h, tu seras parfait. ✨' },
-  { q: 'Mariage samedi, je mets quoi ?', a: 'Costume bleu marine, chemise blanche, richelieus. Coupe ajustée pour ta carrure. 🤵' },
-  { q: 'Il pleut demain…', a: 'Trench + ton pull col roulé gris. Chaussures en cuir traité, pas les suédées. ☔' },
+  {
+    q: 'Qu’est-ce que je mets avec mon short gris ce soir ?',
+    a: 'Ta chemise en lin noir, rentrée devant + des sneakers claires. 21° à 21h, tu seras parfait. ✨',
+  },
+  {
+    q: 'Mariage samedi, je mets quoi ?',
+    a: 'Costume bleu marine, chemise blanche, richelieus. Coupe ajustée pour ta carrure. 🤵',
+  },
+  {
+    q: 'Il pleut demain…',
+    a: 'Trench + ton pull col roulé gris. Chaussures en cuir traité, pas les suédées. ☔',
+  },
 ];
 
 export function LeonScreen({ run, fr }: { run: boolean; fr?: boolean }) {
@@ -362,7 +394,11 @@ export function RealScreen({ run, fr }: { run: boolean; fr?: boolean }) {
         {phase === 'countdown' ? (
           <div className="dr-count">
             <span className="dr-clock">15:00</span>
-            <p>{fr ? 'C’est l’heure de capturer ta tenue du jour' : 'It’s time to capture today’s fit'}</p>
+            <p>
+              {fr
+                ? 'C’est l’heure de capturer ta tenue du jour'
+                : 'It’s time to capture today’s fit'}
+            </p>
           </div>
         ) : phase === 'capture' || phase === 'selfie' ? (
           <div className="dr-cam">
@@ -376,7 +412,15 @@ export function RealScreen({ run, fr }: { run: boolean; fr?: boolean }) {
                 </div>
               ) : null}
             </div>
-            <p>{phase === 'capture' ? (fr ? '1/2 · ta tenue' : '1/2 · your fit') : fr ? '2/2 · le selfie !' : '2/2 · the selfie!'}</p>
+            <p>
+              {phase === 'capture'
+                ? fr
+                  ? '1/2 · ta tenue'
+                  : '1/2 · your fit'
+                : fr
+                  ? '2/2 · le selfie !'
+                  : '2/2 · the selfie!'}
+            </p>
           </div>
         ) : (
           <div className="dr-feed">

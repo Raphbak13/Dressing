@@ -61,7 +61,9 @@ export function ContactForm() {
   if (state === 'sent') {
     return (
       <div className="contact-done">
-        <p>✓ Message envoyé — on te répond à <strong>{email}</strong> au plus vite.</p>
+        <p>
+          ✓ Message envoyé — on te répond à <strong>{email}</strong> au plus vite.
+        </p>
       </div>
     );
   }
@@ -127,8 +129,8 @@ export function ContactForm() {
 
       {state === 'error' ? (
         <p className="contact-error">
-          L’envoi n’a pas abouti. <a href={mailto}>Écris-nous directement par email</a> — ton message
-          est prêt.
+          L’envoi n’a pas abouti. <a href={mailto}>Écris-nous directement par email</a> — ton
+          message est prêt.
         </p>
       ) : null}
     </form>

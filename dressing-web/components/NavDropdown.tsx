@@ -99,7 +99,13 @@ export function NavDropdown({ label, items }: { label: string; items: NavDropdow
 
       <div className="navdd-menu" id={menuId} role="menu" data-open={open} aria-hidden={!open}>
         {items.map((item) => (
-          <Link key={item.href} href={item.href} role="menuitem" className="navdd-item" tabIndex={open ? 0 : -1}>
+          <Link
+            key={item.href}
+            href={item.href}
+            role="menuitem"
+            className="navdd-item"
+            tabIndex={open ? 0 : -1}
+          >
             <span className="navdd-item-label">{item.label}</span>
             <span className="navdd-item-hint">{item.hint}</span>
           </Link>
