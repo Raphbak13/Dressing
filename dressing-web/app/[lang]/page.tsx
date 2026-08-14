@@ -194,25 +194,28 @@ export default function Home({ params }: { params: { lang: string } }) {
             <p className="fh-eyebrow">
               {fr ? 'BIENTÔT SUR L’APP STORE' : 'COMING SOON ON THE APP STORE'}
             </p>
+            {/* Titre court et frappant : c'est le SOUS-TITRE qui porte
+                l'explicite. Un héros qui explique tout dans son titre n'a plus
+                de titre, il a un paragraphe. */}
             <h1 className="fh-title">
               {fr ? (
                 <>
-                  Habille-toi avec ce que
+                  Ton dressing.
                   <br />
-                  tu possèdes déjà.
+                  Réinventé.
                 </>
               ) : (
                 <>
-                  Get dressed with what
+                  Your wardrobe.
                   <br />
-                  you already own.
+                  Reinvented.
                 </>
               )}
             </h1>
             <p className="fh-sub">
               {fr
-                ? 'DRESSING numérise ta garde-robe, compose ta tenue chaque matin selon la météo, et te la montre portée par toi.'
-                : 'DRESSING digitises your wardrobe, composes your outfit every morning from the weather, and shows it worn by you.'}
+                ? 'Photographie ta garde-robe une fois. Chaque matin, Léon compose ta tenue selon la météo et te la montre portée par toi.'
+                : 'Photograph your wardrobe once. Every morning, Léon builds your outfit from the weather and shows it worn by you.'}
             </p>
             <div className="fh-cta">
               <Link className="btn" href={`/${lang}/rejoindre/`}>
