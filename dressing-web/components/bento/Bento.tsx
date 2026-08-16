@@ -294,8 +294,8 @@ export function Bento({ fr = true }: { fr?: boolean }) {
           <h2>{fr ? 'Trois écrans, en vrai.' : 'Three screens, for real.'}</h2>
           <p>
             {fr
-              ? 'Pas des captures figées : ce sont les écrans de l’app, qui tournent devant toi.'
-              : 'Not frozen screenshots: these are the app’s screens, running in front of you.'}
+              ? 'Ce sont les écrans de l’app, qui tournent en direct devant toi.'
+              : 'These are the app’s real screens, running live in front of you.'}
           </p>
         </div>
 

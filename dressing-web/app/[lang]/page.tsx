@@ -52,7 +52,7 @@ export default function Home({ params }: { params: { lang: string } }) {
         {
           tag: 'TENUE DU JOUR',
           h: 'Léon s’habille avec ce que tu as',
-          p: 'Il lit la météo, ton agenda et ta garde-robe réelle. Il compose, il explique son choix, et il retient ce que tu portes pour faire mieux demain.',
+          p: 'Il lit la météo, ton agenda et ta garde-robe réelle. Il compose, il explique son choix, et il retient ce que tu portes pour affiner le lendemain.',
           to: 'fonctionnalites',
         },
         {
@@ -64,13 +64,13 @@ export default function Home({ params }: { params: { lang: string } }) {
         {
           tag: 'RENDU PORTÉ',
           h: 'La tenue, sur toi',
-          p: 'Une photo de toi suffit. Pas une silhouette générique, pas un dessin : toi, habillé de tes propres vêtements.',
+          p: 'Une photo de toi suffit. Léon te montre le look sur toi, avec tes propres vêtements, avant que tu t’habilles.',
           to: 'abonnements',
         },
         {
           tag: 'DRESSING REAL',
           h: 'Le rituel de 15 h',
-          p: 'Deux photos, une pour la tenue et une pour toi. Tes amis voient ce que tu portes vraiment, ce jour-là, pas ce que tu as mis en scène.',
+          p: 'Deux photos, une pour la tenue et une pour toi. Tes amis découvrent ta tenue du jour, telle qu’elle est, au moment où tu la portes.',
           to: 'fonctionnalites',
         },
         {
@@ -100,7 +100,7 @@ export default function Home({ params }: { params: { lang: string } }) {
         {
           tag: 'LE FEED',
           h: 'Les tenues du monde entier',
-          p: 'Chaque pièce est étiquetée par celui qui la porte : marque, matière, couleur. Tu ne tombes plus sur une photo sans savoir ce que c’est.',
+          p: 'Chaque pièce est étiquetée par celui qui la porte : marque, matière, couleur. Tu sais exactement ce que tu regardes, et où le chercher.',
           to: 'fonctionnalites',
         },
       ]
@@ -120,13 +120,13 @@ export default function Home({ params }: { params: { lang: string } }) {
         {
           tag: 'WORN RENDER',
           h: 'The outfit, on you',
-          p: 'One photo of you is enough. Not a generic silhouette, not a drawing: you, in your own clothes.',
+          p: 'One photo of you is enough. Léon shows you the look on yourself, in your own clothes, before you get dressed.',
           to: 'abonnements',
         },
         {
           tag: 'DRESSING REAL',
           h: 'The 3pm ritual',
-          p: 'Two photos, one for the outfit and one for you. Your friends see what you actually wear that day, not what you staged.',
+          p: 'Two photos, one for the outfit and one for you. Your friends see your outfit of the day, as it is, the moment you wear it.',
           to: 'fonctionnalites',
         },
         {
@@ -156,7 +156,7 @@ export default function Home({ params }: { params: { lang: string } }) {
         {
           tag: 'THE FEED',
           h: 'Outfits from everywhere',
-          p: 'Every piece is tagged by whoever wears it: brand, fabric, colour. No more falling on a photo without knowing what it is.',
+          p: 'Every piece is tagged by whoever wears it: brand, fabric, colour. You know exactly what you are looking at, and where to find it.',
           to: 'fonctionnalites',
         },
       ];
@@ -317,9 +317,7 @@ export default function Home({ params }: { params: { lang: string } }) {
         <div className="container narrow">
           <Reveal>
             <h2 className="fcta-h">
-              {fr
-                ? 'Prêt à ne plus jamais fixer ton armoire ?'
-                : 'Ready to stop staring at your wardrobe?'}
+              {fr ? 'Ta prochaine tenue t’attend déjà.' : 'Your next outfit is already waiting.'}
             </h2>
             <p className="sub">
               {fr

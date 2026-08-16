@@ -65,12 +65,12 @@ export default function PricingPage({ params }: { params: { lang: string } }) {
                 {
                   n: '03',
                   h: 'Tu te vois porter la tenue',
-                  p: 'Une photo de toi, et Léon te montre le look sur toi. Pas une silhouette générique, pas un dessin : toi, habillé de tes propres vêtements.',
+                  p: 'Une photo de toi, et Léon te montre le look sur toi, avec tes propres vêtements. Tu vois le résultat avant de t’habiller.',
                 },
                 {
                   n: '04',
                   h: 'Quelqu’un à qui demander',
-                  p: 'Une question à 7 h du matin, un mariage dans trois semaines, une pièce vue dans la rue que tu veux décrypter. Léon répond, se souvient, et ne te renvoie jamais vers un moteur de recherche.',
+                  p: 'Une question à 7 h du matin, un mariage dans trois semaines, une pièce vue dans la rue que tu veux décrypter. Léon répond, retient ta situation, et reprend la conversation là où vous l’aviez laissée.',
                 },
               ]
             : [
@@ -92,7 +92,7 @@ export default function PricingPage({ params }: { params: { lang: string } }) {
                 {
                   n: '04',
                   h: 'Someone to ask',
-                  p: 'A question at 7am, a wedding in three weeks, a piece spotted on the street. Léon answers, remembers, and never sends you to a search engine.',
+                  p: 'A question at 7am, a wedding in three weeks, a piece spotted on the street. Léon answers, remembers your situation, and picks the conversation back up where you left it.',
                 },
               ]
           ).map((b, i) => (
@@ -121,8 +121,8 @@ export default function PricingPage({ params }: { params: { lang: string } }) {
             </h2>
             <p className="price-intro">
               {fr
-                ? 'La différence n’est pas la qualité du conseil, c’est la quantité. Léon appelle une IA à chaque tenue et chaque analyse : les Crowns mesurent ce travail, rien d’autre.'
-                : 'The difference is not the quality of the advice, it is the amount. Léon calls an AI for every outfit and every analysis: Crowns measure that work, nothing else.'}
+                ? 'Les deux formules donnent le même conseil, avec la même exigence. Ce qui change, c’est le volume : Léon appelle une IA à chaque tenue et chaque analyse, et les Crowns mesurent ce travail.'
+                : 'Both plans give the same advice, held to the same standard. What changes is the volume: Léon calls an AI for every outfit and every analysis, and Crowns measure that work.'}
             </p>
           </Reveal>
 

@@ -178,7 +178,7 @@ function SponsorForm({ incomingRef }: { incomingRef: string | null }) {
       <button className="wl-btn" type="submit" disabled={state === 'sending'}>
         {state === 'sending' ? 'Un instant…' : 'Obtenir mon lien'}
       </button>
-      <p className="wl-fine">Aucune carte bancaire. Un email, rien de plus.</p>
+      <p className="wl-fine">Un email suffit. Rien à payer.</p>
     </form>
   );
 }
@@ -231,8 +231,8 @@ function BetaForm() {
         <h2>On revient vers toi.</h2>
         <p className="wl-sub">
           Cinquante places, sélection à la main. Si tu es retenu, tu recevras un email avec
-          l’invitation TestFlight et l’accès au groupe privé. Sinon, tu n’entendras rien de nous :
-          on ne relance personne.
+          l’invitation TestFlight et l’accès au groupe privé. Nous écrivons uniquement aux personnes
+          sélectionnées.
         </p>
       </div>
     );
@@ -243,8 +243,8 @@ function BetaForm() {
       <p className="wl-kicker">VOIE 2 · BETA TESTEUR</p>
       <h2>Devenir beta testeur</h2>
       <p className="wl-sub">
-        Cinquante places. Deux semaines d’engagement réel, et un mois ELITE offert à la clé.
-        Exigeant, et c’est voulu.
+        Cinquante places, sélectionnées à la main. Deux semaines d’engagement réel, et un mois ELITE
+        offert à la clé.
       </p>
 
       <label className="wl-label" htmlFor="bt-email">
@@ -327,7 +327,7 @@ function BetaForm() {
         {state === 'sending' ? 'Un instant…' : 'Envoyer ma candidature'}
       </button>
       <p className="wl-fine">
-        Sans l’engagement coché, la candidature ne part pas. C’est le cœur du programme.
+        L’engagement est le cœur du programme : coche-le pour envoyer ta candidature.
       </p>
     </form>
   );
